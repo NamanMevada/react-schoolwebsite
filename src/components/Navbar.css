@@ -1,0 +1,960 @@
+/* ========================================
+   GREENFIELD HIGH SCHOOL - NAVBAR
+   Modern Classic Design
+   ======================================== */
+
+/* CSS Variables */
+:root {
+    --nav-primary: #1a365d;
+    --nav-primary-light: #2c5282;
+    --nav-primary-dark: #0f2440;
+    --nav-secondary: #c9a227;
+    --nav-secondary-light: #d4b84a;
+    --nav-white: #ffffff;
+    --nav-text-light: rgba(255, 255, 255, 0.9);
+    --nav-text-muted: rgba(255, 255, 255, 0.7);
+    --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --nav-transition: all 0.3s ease;
+    --nav-height: 80px;
+    --nav-height-scrolled: 70px;
+    --top-bar-height: 40px;
+}
+
+/* ========================================
+   TOP BAR
+   ======================================== */
+.top-bar {
+    background: var(--nav-primary-dark);
+    height: var(--top-bar-height);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    transition: var(--nav-transition);
+}
+
+.top-bar.hidden {
+    transform: translateY(-100%);
+}
+
+.top-bar-container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar-left {
+    display: flex;
+    gap: 24px;
+}
+
+.top-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--nav-text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: var(--nav-transition);
+}
+
+.top-bar-item:hover {
+    color: var(--nav-secondary);
+}
+
+.top-bar-item svg {
+    width: 14px;
+    height: 14px;
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--nav-text-muted);
+    transition: var(--nav-transition);
+}
+
+.social-links a:hover {
+    color: var(--nav-secondary);
+    transform: translateY(-2px);
+}
+
+.social-links svg {
+    width: 16px;
+    height: 16px;
+}
+
+.top-bar-btn {
+    background: var(--nav-secondary);
+    color: var(--nav-primary-dark);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--nav-transition);
+}
+
+.top-bar-btn:hover {
+    background: var(--nav-secondary-light);
+}
+
+/* ========================================
+   MAIN NAVBAR
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: var(--top-bar-height);
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background: var(--nav-primary);
+    z-index: 9999;
+    transition: var(--nav-transition);
+}
+
+.navbar.scrolled {
+    top: 0;
+    height: var(--nav-height-scrolled);
+    background: rgba(26, 54, 93, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--nav-shadow);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.navbar-logo img {
+    width: 50px;
+    height: 60px;
+    object-fit: contain;
+    transition: var(--nav-transition);
+}
+
+.navbar.scrolled .navbar-logo img {
+    width: 42px;
+    height: 50px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.school-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--nav-white);
+    line-height: 1.2;
+}
+
+.school-type {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--nav-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    display: block;
+    padding: 10px 18px;
+    color: var(--nav-text-light);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: var(--nav-transition);
+    position: relative;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--nav-secondary);
+    transition: var(--nav-transition);
+    border-radius: 2px;
+}
+
+.nav-links a:hover {
+    color: var(--nav-white);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    width: calc(100% - 36px);
+}
+
+.nav-links a.active {
+    color: var(--nav-white);
+}
+
+/* Nav Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--nav-transition);
+}
+
+.action-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--nav-white);
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.action-btn.active {
+    background: var(--nav-secondary);
+}
+
+.action-btn.active svg {
+    color: var(--nav-primary-dark);
+}
+
+/* Portal Button */
+.portal-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--nav-secondary);
+    color: var(--nav-primary-dark);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--nav-transition);
+}
+
+.portal-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.portal-btn:hover {
+    background: var(--nav-secondary-light);
+    transform: translateY(-2px);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.hamburger-box {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 18px;
+    margin: auto;
+}
+
+.hamburger-inner {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--nav-white);
+    border-radius: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background 0s 0.15s;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--nav-white);
+    border-radius: 2px;
+    left: 0;
+    transition: top 0.15s 0.15s ease, transform 0.15s ease;
+}
+
+.hamburger-inner::before {
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    top: 8px;
+}
+
+.hamburger.active .hamburger-inner {
+    background: transparent;
+}
+
+.hamburger.active .hamburger-inner::before {
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 0.15s ease, transform 0.15s 0.15s ease;
+}
+
+.hamburger.active .hamburger-inner::after {
+    top: 0;
+    transform: rotate(-45deg);
+    transition: top 0.15s ease, transform 0.15s 0.15s ease;
+}
+
+/* ========================================
+   SEARCH OVERLAY
+   ======================================== */
+.search-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--nav-white);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    box-shadow: var(--nav-shadow);
+}
+
+.search-overlay.active {
+    max-height: 100px;
+    padding: 20px 0;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.search-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0 16px;
+    transition: var(--nav-transition);
+}
+
+.search-form:focus-within {
+    border-color: var(--nav-primary);
+    box-shadow: 0 0 0 4px rgba(26, 54, 93, 0.1);
+}
+
+.search-form svg {
+    width: 20px;
+    height: 20px;
+    color: #718096;
+    flex-shrink: 0;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 14px 16px;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    color: #1a202c;
+    outline: none;
+}
+
+.search-form input::placeholder {
+    color: #a0aec0;
+}
+
+.search-submit {
+    background: var(--nav-primary);
+    color: var(--nav-white);
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--nav-transition);
+}
+
+.search-submit:hover {
+    background: var(--nav-primary-dark);
+}
+
+.search-close {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7fafc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--nav-transition);
+}
+
+.search-close svg {
+    width: 20px;
+    height: 20px;
+    color: #4a5568;
+}
+
+.search-close:hover {
+    background: #e2e8f0;
+}
+
+/* ========================================
+   MOBILE MENU
+   ======================================== */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--nav-white);
+    z-index: 10000;
+    overflow-y: auto;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.mobile-logo img {
+    width: 40px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.mobile-logo .school-name {
+    color: var(--nav-primary);
+    font-size: 18px;
+}
+
+.mobile-logo .school-type {
+    color: var(--nav-secondary);
+}
+
+.mobile-close {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7fafc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--nav-transition);
+}
+
+.mobile-close svg {
+    width: 24px;
+    height: 24px;
+    color: #4a5568;
+}
+
+.mobile-close:hover {
+    background: #e2e8f0;
+}
+
+/* Mobile Search */
+.mobile-search {
+    display: flex;
+    align-items: center;
+    margin: 20px 24px;
+    padding: 0 16px;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.mobile-search svg {
+    width: 20px;
+    height: 20px;
+    color: #718096;
+    flex-shrink: 0;
+}
+
+.mobile-search input {
+    flex: 1;
+    padding: 14px 12px;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    color: #1a202c;
+    outline: none;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    animation: slideInRight 0.4s ease forwards;
+    opacity: 0;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-nav a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    color: #1a202c;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
+    transition: var(--nav-transition);
+}
+
+.mobile-nav a svg {
+    width: 20px;
+    height: 20px;
+    color: #a0aec0;
+    transition: var(--nav-transition);
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    background: #f7fafc;
+    color: var(--nav-primary);
+}
+
+.mobile-nav a:hover svg,
+.mobile-nav a.active svg {
+    color: var(--nav-primary);
+    transform: translateX(4px);
+}
+
+.mobile-nav a.active {
+    border-left: 3px solid var(--nav-secondary);
+}
+
+/* Mobile CTA */
+.mobile-cta {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.mobile-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--nav-transition);
+}
+
+.mobile-cta-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.mobile-cta-btn.primary {
+    background: var(--nav-secondary);
+    color: var(--nav-primary-dark);
+}
+
+.mobile-cta-btn.primary:hover {
+    background: var(--nav-secondary-light);
+}
+
+.mobile-cta-btn.secondary {
+    background: var(--nav-primary);
+    color: var(--nav-white);
+}
+
+.mobile-cta-btn.secondary:hover {
+    background: var(--nav-primary-dark);
+}
+
+/* Mobile Contact */
+.mobile-contact {
+    padding: 0 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-contact a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--nav-transition);
+}
+
+.mobile-contact a:hover {
+    color: var(--nav-primary);
+}
+
+.mobile-contact svg {
+    width: 18px;
+    height: 18px;
+    color: var(--nav-secondary);
+}
+
+/* Mobile Social */
+.mobile-social {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.mobile-social a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7fafc;
+    border-radius: 8px;
+    color: #4a5568;
+    transition: var(--nav-transition);
+}
+
+.mobile-social a:hover {
+    background: var(--nav-primary);
+    color: var(--nav-white);
+}
+
+.mobile-social svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ========================================
+   OVERLAY
+   ======================================== */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--nav-transition);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Large Tablet */
+@media (max-width: 1200px) {
+    .navbar-container,
+    .top-bar-container {
+        padding: 0 24px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-links a {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .portal-btn span {
+        display: none;
+    }
+
+    .portal-btn {
+        padding: 10px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .portal-btn {
+        display: none;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .top-bar {
+        display: none;
+    }
+
+    .navbar {
+        top: 0;
+        height: 70px;
+    }
+
+    .navbar.scrolled {
+        height: 60px;
+    }
+
+    .navbar-container {
+        padding: 0 16px;
+    }
+
+    .navbar-logo img {
+        width: 40px;
+        height: 48px;
+    }
+
+    .navbar.scrolled .navbar-logo img {
+        width: 36px;
+        height: 43px;
+    }
+
+    .school-name {
+        font-size: 16px;
+    }
+
+    .school-type {
+        font-size: 10px;
+    }
+
+    .action-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .search-overlay.active {
+        padding: 16px 0;
+    }
+
+    .search-container {
+        padding: 0 16px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    .search-close {
+        display: none;
+    }
+
+    .mobile-menu {
+        max-width: 100%;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .navbar {
+        height: 64px;
+    }
+
+    .navbar.scrolled {
+        height: 56px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+    .mobile-menu-header {
+        padding: 16px;
+    }
+
+    .mobile-search {
+        margin: 16px;
+    }
+
+    .mobile-nav a {
+        padding: 16px;
+    }
+
+    .mobile-cta {
+        padding: 16px;
+    }
+
+    .mobile-contact {
+        padding: 0 16px 16px;
+    }
+
+    .mobile-social {
+        padding: 16px;
+    }
+}
+
+/* ========================================
+   BODY OFFSET FOR FIXED NAVBAR
+   ======================================== */
+body {
+    padding-top: calc(var(--top-bar-height) + var(--nav-height));
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 64px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .top-bar,
+    .navbar,
+    .mobile-menu,
+    .nav-overlay {
+        display: none;
+    }
+
+    body {
+        padding-top: 0;
+    }
+}
